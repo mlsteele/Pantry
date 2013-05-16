@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'pantryproj.views.home', name='home'),
     # url(r'^pantryproj/', include('pantryproj.foo.urls')),
 
+    url(r'^$', 'pantry.views.index'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

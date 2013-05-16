@@ -1,0 +1,24 @@
+{% extends 'pantry/base.html' %}
+ 
+ 
+{% block title %} Blog Archive {% endblock %}
+ 
+{% block content %}
+    <h1>Pantry</h1>
+    {% for grocery in grocerys %}
+    <div class="grocery">
+        <h2>
+            <a href="{{grocery.get_absolute_url}}">
+                {{grocery.name}}
+            </a>
+        </h2>
+        <p>{{grocery.description}}</p>
+        <p>
+            Posted on
+            <time datetime="{{grocery.created|date:"c"}}">
+            {{grocery.created|date}}
+            </time>
+        </p>
+    </div>
+    {% endfor %}
+{% endblock %}

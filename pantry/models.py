@@ -3,9 +3,10 @@ from django.db import models
 
 class Grocery(models.Model):
     name        = models.CharField(max_length=255)
-    count       = models.IntegerField(default=0)
+    count       = models.IntegerField(default=1)
     description = models.CharField(max_length=255)
     created     = models.DateTimeField(auto_now_add=True)
+    expires     = models.DateTimeField()
 
     class Meta:
         ordering = ['-count']
