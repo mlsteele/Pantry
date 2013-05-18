@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # RESTframework
-from pantry.models import Grocery
+from pantry.models import Grocery, Recipe
 from rest_framework import viewsets, routers
 
 # admin
@@ -13,8 +13,12 @@ admin.autodiscover()
 class GroceryViewSet(viewsets.ModelViewSet):
     model = Grocery
 
+class RecipeViewSet(viewsets.ModelViewSet):
+    model = Recipe
+
 rest_router = routers.DefaultRouter()
-rest_router.register(r'grocerys',  GroceryViewSet)
+rest_router.register(r'grocerys', GroceryViewSet)
+rest_router.register(r'recipes', RecipeViewSet)
 
 
 urlpatterns = patterns('',

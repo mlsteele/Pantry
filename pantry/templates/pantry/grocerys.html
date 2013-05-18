@@ -5,9 +5,12 @@
  
 {% block content %}
     <script src="{{ STATIC_URL }}pantry/vendor/jquery-1.9.1.js"></script>
+    <script src="{{ STATIC_URL }}pantry/vendor/underscore.js"></script>
     {% load compress %}
     {% compress js %}
     <script  type="text/coffeescript" src="{{ STATIC_URL }}pantry/js/grocerys.coffee"></script>
     {% endcompress %}
     <h1>Grocerys</h1>
+    <div class="grocerylist"></div>
+    <div class="recipelist"></div>
 {% endblock %}

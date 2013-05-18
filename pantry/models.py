@@ -11,8 +11,8 @@ class Grocery(models.Model):
     class Meta:
         ordering = ['-count']
 
-    # def __unicode__(self):
-        # return u'%s' % self.title
-
-    # def get_absolute_url(self):
-        # return reverse('blog.views.post', args=[self.slug])
+class Recipe(models.Model):
+    name        = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, default="")
+    created     = models.DateTimeField(auto_now_add=True)
+    ingredients = models.ManyToManyField(Grocery)
