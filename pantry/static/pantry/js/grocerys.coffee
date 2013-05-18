@@ -12,7 +12,7 @@ log 'why hello there (from coffeescript).'
 #   complete: (jqXHR, err_str) -> log "complete '#{err_str}'"
 
 class Model
-  @get_all = (success) ->
+  @ajax = (url, success, type, data={}) ->
     $.ajax
       url: @_url
       type: 'GET'
@@ -24,6 +24,10 @@ class Model
       error: (jqXHR, err_str, exception) -> log "error '#{err_str}'", exception
       complete: (jqXHR, err_str) -> log "complete '#{err_str}'"
 
+  @get_all = (success) -> @ajax @_url, success, 'GET'
+
+  @get_by_url = (url) -> @ajax @_url, success, 'GET'
+
 
 class GroceryModel extends Model
   @_url = '/API-REST-1/grocerys/'
@@ -33,7 +37,6 @@ class RecipeModel extends Model
 
 
 _.templateSettings = interpolate : /\{\{(.+?)\}\}/g
-
 
 
 $ =>
@@ -48,5 +51,4 @@ $ =>
     for recipe in recipes
       template = _.template "<div> recipe: {{ name }} </div>"
       html = template recipe
-      log recipe
-      $('.recipelist').append html
+      log $('.recipelist').append html
