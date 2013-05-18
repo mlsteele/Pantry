@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from pantry.models import Grocery
 
-def index(request):
+def test1(request):
     grocerys = Grocery.objects.filter(count=1)
-    return render(request, 'pantry/index.html', {'grocerys': grocerys})
+    return render(request, 'pantry/test1.html', {'grocerys': grocerys})
+
+def grocerys(request):
+  return render(request, 'pantry/grocerys.html')
 
 def post(request, slug):
     # get the Post object
